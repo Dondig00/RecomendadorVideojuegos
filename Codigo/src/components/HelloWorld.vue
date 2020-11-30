@@ -270,9 +270,8 @@ export default {
         if(v.number_players==undefined){
           v.number_players="1 player";
         }
-       // ((v)=>{ var visita = 0 ;v.visita = visita })
+       // añado las visitas a 0 de cada videojuego
         v.visita=0;
-       //this.Videogames.forEach((a)=>{ var nota = (Number(a.user_score) + Number(a.metaescore)) ;a.nota = nota })
     }
     
 
