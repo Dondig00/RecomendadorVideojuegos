@@ -158,7 +158,7 @@
               elevation="18"
               style="background: #3A1C71;
     background: -webkit-linear-gradient(to right, #A195C9, #DADADA, white);
-    background: linear-gradient(to right,  #A195C9, #DADADA, white);"
+    background: linear-gradient(to right,  #A195C9, #DADADA, white);" class="cajaVideo"
             >
               <v-card-title>{{index + 1}}: {{videogame.name}}</v-card-title>
               <v-card-subtitle>
@@ -169,6 +169,9 @@
                 Genero: {{String(videogame.genres)}}<!--M-->
                 <br />
                 Multijugador: {{videogame.number_players}}
+                <br />
+                <v-btn color="grey darken-1" class="botonLado" rounded @click="cuenta(index)" >¡Visitame!</v-btn>
+                
               </v-card-subtitle>
             </v-card>
           </v-flex>
@@ -262,10 +265,14 @@ export default {
     
     
     // Si no tiene el numero de jugadores les da 1 por defecto que es el minimo
+     
     for (var v of this.Videogames) {
         if(v.number_players==undefined){
           v.number_players="1 player";
         }
+       // ((v)=>{ var visita = 0 ;v.visita = visita })
+        v.visita=0;
+       //this.Videogames.forEach((a)=>{ var nota = (Number(a.user_score) + Number(a.metaescore)) ;a.nota = nota })
     }
     
 
@@ -493,7 +500,7 @@ export default {
         mejor: function(){ // La funcion que usa para recomendar los juegos por nota
          
           //Crea la nota de cada videojuego, la cual almacena en cada videojuego y las usa para ordenarlos
-          this.Videogames.forEach((a)=>{ var nota = (Number(a.user_score) + Number(a.metaescore)) ;a.nota = nota }) // Por cada juego en Videogames coge la nota de usuario y la de metascore, las transforma en numeros ya que son objetos y los suma , despues los añade a una nueva propiedad que sera nota
+          this.Videogames.forEach((a)=>{ var nota = (Number(a.user_score) + Number(a.metaescore) + Number(a.visita * 2)) ;a.nota = nota }) // Por cada juego en Videogames coge la nota de usuario , la de metascore y el numero de veces visitado multiplicado por 2, las transforma en numeros ya que son objetos y los suma , despues los añade a una nueva propiedad que sera nota
           
           //El sort para ordenar los videojuegos por nota
           this.Videogames.sort(function(a,b) { // Coloca por nota los juegos de mayor a menor
@@ -527,6 +534,12 @@ export default {
             })
           }
 
+        },
+
+        cuenta: function(intValue){
+           //Anade 1 visita por cada vez que se le da al boton del juego
+           this.Videogames[intValue].visita= this.Videogames[intValue].visita+1;
+           //console.log(this.Videogames[intValue].visita);
         }
 
 
@@ -559,5 +572,14 @@ export default {
       align-self: center;
       align-items: center;
       margin-left: 30%;
+    }
+    .botonLado{
+      align-items: right;
+      align-self: right;
+      margin-left: 75%;
+      
+    }
+    .cajaVideo{
+      width: 500px;
     }
   </style>
