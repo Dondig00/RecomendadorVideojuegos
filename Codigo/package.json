@@ -18,6 +18,22 @@
     "vuetify": "^2.2.11",
     "vuex": "^3.4.0"
   },
+  "eslintConfig": {
+    "root": true,
+    "rules": {
+      "no-console": "off"
+    },
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "parserOptions": {
+      "parser": "babel-eslint"
+    }
+  },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
     "@vue/cli-plugin-e2e-cypress": "~4.5.0",
