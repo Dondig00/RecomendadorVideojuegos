@@ -170,6 +170,7 @@
                 <br />
                 Multijugador: {{videogame.number_players}}
                 <br />
+                <v-spacer></v-spacer>
                 <v-btn color="grey darken-1" class="botonLado" rounded @click="cuenta(index)" >¡Visitame!</v-btn>
                 
               </v-card-subtitle>
@@ -580,5 +581,6 @@ export default {
     }
     .cajaVideo{
       width: 500px;
+      height: 210px;
     }
   </style>
